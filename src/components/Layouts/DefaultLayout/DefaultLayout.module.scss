@@ -1,0 +1,15 @@
+@import '/src/components//GlobalStyles//varibable';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: $default-layout-width;
+    display: flex;
+}
+.content {
+    flex: 1;
+}

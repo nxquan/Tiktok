@@ -1,0 +1,88 @@
+@import '/src/components/GlobalStyles/varibable';
+
+.wrapper {
+    width: 100%;
+    height: $default-layout-header-height;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+}
+
+.inner {
+    width: $default-layout-width;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px 0 20px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+.search {
+    width: 361px;
+    height: 46px;
+    background-color: #F1F1F2;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 92px;
+    border: 1.5px solid transparent;
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+.serach-input {
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 16px 14px;
+    color: $text-color;
+    caret-color: $primary-color;
+
+    height: 100%;
+    flex: 1;
+    background-color: transparent;
+
+    &:not(:placeholder-shown) ~ .search-btn svg {
+        fill: rgba(22, 24, 35, 0.75) !important;
+    }
+    
+}
+.search-line {
+    display: block;
+    width: 1px;
+    height: 70%;
+    background: rgba(22, 24, 35, 0.2);
+}
+
+.search-btn {
+    padding: 9px 16px 9px 12px;
+    &:hover {
+        cursor: pointer;
+        background: rgba(22, 24, 35, 0.03);
+    }
+    &:active {
+        background: rgba(22, 24, 35, 0.06);
+    }
+    svg {
+        fill: rgba(22, 24, 35, 0.34);
+    }
+}
+.clear,
+.loading {
+    font-size: 14px;
+    color: rgba(22, 24, 35, 0.34);;
+    margin-right: 12px;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+.loading {
+    display: none;
+}
+.utility {
+    height: 36px;
+
+}
