@@ -1,0 +1,45 @@
+
+@import '/src/components/GlobalStyles/varibable';
+
+
+.wrapper {
+    padding: 9px 16px;
+    cursor: pointer;
+    background: #fff;
+    display: flex;
+    overflow: hidden;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.title {
+    font-size: 1.6rem;
+    color: $text-color;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.description {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 1.4rem;
+    font-weight: 4000;
+    line-height: 20px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.icon {
+    width: 14px;
+    margin-left: 4px;
+    color: rgba(32, 213, 236, 1);
+}
