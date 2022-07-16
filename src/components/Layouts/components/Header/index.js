@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleXmark,
+    faSpinner,
+    faPlus,
+    faEllipsisV,
+    faLanguage,
+    faKeyboard,
+    faQuestionCircle,
+} from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
 import styles from './Header.module.scss';
@@ -9,9 +17,24 @@ import images from '@/assets/images';
 import { Wrapper as PopWrapper } from '@/components/Popper';
 import AccountItem from '@/components/AccountItem';
 import Button from '@/components/Button';
+import { Menu } from '@/components/Popper/index';
 
 const cx = classNames.bind(styles);
-
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faQuestionCircle} />,
+        title: 'Keyboard shortcuts',
+    },
+];
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
@@ -27,20 +50,12 @@ function Header() {
                     <img src={images.logo} alt="Logo tiktok" />
                 </a>
                 <Tippy
-                    interactive={true}
+                    interactive
                     visible={searchResult.length > 0}
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopWrapper>
                                 <h4 className={cx('search-title')}>Tài khoản</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
@@ -51,7 +66,7 @@ function Header() {
                     <div className={cx('search')}>
                         <input
                             type="text"
-                            placeholder="Tìm kiếm tài khoản và video"
+                            placeholder="Search accounts and videos"
                             className={cx('search-input')}
                         />
                         <button className={cx('clear')}>
@@ -80,16 +95,17 @@ function Header() {
 
                 <div className={cx('utility')}>
                     <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />} to="/upload">
-                        Tải lên
+                        Upload
                     </Button>
                     <Button primary to="/login">
-                        Đăng nhập
+                        Login
                     </Button>
-                    <Button none className={cx('more-btn')}>
-                        <FontAwesomeIcon icon={faEllipsisV} />
-                    </Button>           
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisV} />
+                        </button>
+                    </Menu>
                 </div>
-                
             </div>
         </header>
     );

@@ -1,4 +1,4 @@
-@import '/src/components/GlobalStyles/varibable';
+@import '/src/components/GlobalStyles/variable';
 
 .wrapper {
     width: 100%;
@@ -20,7 +20,8 @@
     align-items: center;
 }
 
-.search, .search-result {
+.search,
+.search-result {
     width: 361px;
 }
 .search-result {
@@ -33,10 +34,10 @@
 ::-webkit-scrollbar-thumb {
     background: rgba(22, 24, 35, 0.2);
     border-radius: 10px;
-  }
+}
 .search {
     height: 46px;
-    background-color: #F1F1F2;
+    background-color: #f1f1f2;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -60,7 +61,6 @@
     &:not(:placeholder-shown) ~ .search-btn svg {
         fill: rgba(22, 24, 35, 0.75) !important;
     }
-    
 }
 .search-line {
     display: block;
@@ -94,7 +94,7 @@
 .clear,
 .loading {
     font-size: 14px;
-    color: rgba(22, 24, 35, 0.34);;
+    color: rgba(22, 24, 35, 0.34);
     margin-right: 12px;
     position: relative;
 
@@ -111,12 +111,13 @@
 }
 .more-btn {
     min-width: 20px !important;
+    margin-left: 20px;
+    padding: 6px;
+    background-color: transparent;
+    &:hover {
+        cursor: pointer;
+    }
     & svg {
         font-size: 20px;
     }
-}
-
-.more-menu {
-    background-color: none;
-
 }

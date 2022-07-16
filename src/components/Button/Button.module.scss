@@ -1,4 +1,4 @@
-@import '/src/components/GlobalStyles/varibable';
+@import '/src/components/GlobalStyles/_variable';
 
 .wrapper {
     font-size: 1.6rem;
@@ -18,12 +18,16 @@
     &.disabled {
         pointer-events: none;
         opacity: 0.6;
-    }    
+    }
+    &:hover {
+        cursor: pointer;
+    }
 }
 .icon {
     margin-left: 12px;
 }
-.icon + .title, .title + .icon {
+.icon + .title,
+.title + .icon {
     margin-left: 12px;
 }
 
@@ -49,6 +53,7 @@
     outline: none;
     background-color: #fff;
     border: 1px solid rgba(22, 24, 35, 0.12);
+    font-weight: 500;
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
     }
@@ -58,7 +63,7 @@
     background-color: $primary-color;
     border-color: $primary-color;
     &:hover {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),#FE2C55;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
     }
 }
 .outline {
@@ -82,4 +87,3 @@
     min-height: 48px;
     min-width: 168px;
 }
-

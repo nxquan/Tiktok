@@ -1,26 +1,35 @@
+import Tippy from '@tippyjs/react/headless';
 
-import classNames from "classnames";
-import Tippy from "@tippyjs/react/headless";
+import classNames from 'classnames/bind';
 
-function Menu({ children }) {
-    return ( 
+import styles from './Menu.module.scss';
+import { Wrapper as PopWrapper } from '@/components/Popper';
+import MenuItem from './MenuItem';
+
+const cx = classNames.bind(styles);
+
+function Menu({ items, children }) {
+    const renderItem = () => {
+        return items.map((item, index) => {
+            return <MenuItem key={index} data={item}></MenuItem>;
+        });
+    };
+    return (
         <Tippy
-                    interactive={true}
-                    placement="bottom-end"
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopWrapper>
-                                <h4 className={cx('search-title')}>Tài khoản</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopWrapper>
-                        </div>
-                    )}
-                >
-                    {children}
-                </Tippy>
-     );
+            interactive
+            placement="bottom-end"
+            delay={[0, 700]}
+            render={(attrs) => (
+                <div className={cx('content')} tabIndex="-1" {...attrs}>
+                    <PopWrapper className={cx('popper-menu')}>
+                        <ul className={cx('menu-list')}>{renderItem()}</ul>
+                    </PopWrapper>
+                </div>
+            )}
+        >
+            {children}
+        </Tippy>
+    );
 }
 
 export default Menu;
