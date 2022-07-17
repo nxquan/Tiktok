@@ -123,12 +123,14 @@
 }
 
 .util-btn {
-    font-size: 2.2rem;
     color: $text-color;
-    padding: 6px;
     margin-left: 16px;
     &:hover {
         cursor: pointer;
+    }
+
+    &.util-btn--ml {
+        margin-left: 19px;
     }
 }
 
