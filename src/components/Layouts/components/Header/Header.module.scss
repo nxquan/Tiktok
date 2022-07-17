@@ -121,3 +121,24 @@
         font-size: 20px;
     }
 }
+
+.util-btn {
+    font-size: 2.2rem;
+    color: $text-color;
+    padding: 6px;
+    margin-left: 16px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-left: 24px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

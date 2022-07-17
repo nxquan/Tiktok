@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
@@ -9,9 +8,18 @@ import {
     faLanguage,
     faKeyboard,
     faQuestionCircle,
+    faMessage,
+    faEnvelope,
+    faUser,
+    faCoins,
+    faGear,
+    faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
+import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import images from '@/assets/images';
 import { Wrapper as PopWrapper } from '@/components/Popper';
@@ -52,7 +60,7 @@ const MENU_ITEMS = [
 ];
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
-
+    let currentUser = true;
     useEffect(() => {
         setTimeout(() => {
             setSearchResult([]);
@@ -67,13 +75,37 @@ function Header() {
             default:
         }
     };
+    const currentUserMenu = [
+        {
+            icon: <FontAwesomeIcon icon={faUser} />,
+            title: 'View profile',
+            to: '/profile',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCoins} />,
+            title: 'Get coins',
+            to: '/coins',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear} />,
+            title: 'Setting',
+            to: '/setting',
+        },
+        ...MENU_ITEMS,
+        {
+            icon: <FontAwesomeIcon icon={faSignOut} />,
+            title: 'Log out',
+            to: '/login',
+            separate: true,
+        },
+    ];
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <a href="/" className={cx('logo')}>
                     <img src={images.logo} alt="Logo tiktok" />
                 </a>
-                <Tippy
+                <HeadlessTippy
                     interactive
                     visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -115,19 +147,44 @@ function Header() {
                             </svg>
                         </button>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
 
                 <div className={cx('utility')}>
                     <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />} to="/upload">
                         Upload
                     </Button>
-                    <Button primary to="/login">
-                        Login
-                    </Button>
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisV} />
-                        </button>
+                    {currentUser ? (
+                        <>
+                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                <button className={cx('util-btn')}>
+                                    <FontAwesomeIcon icon={faEnvelope} />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                                <button className={cx('util-btn')}>
+                                    <FontAwesomeIcon icon={faMessage} />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <Button primary to="/login">
+                            Login
+                        </Button>
+                    )}
+                    <Menu
+                        items={currentUser ? currentUserMenu : MENU_ITEMS}
+                        onChange={handleMenuChange}
+                    >
+                        {currentUser ? (
+                            <img
+                                className={cx('user-avatar')}
+                                src="https://p16-sign-sg.tiktokcdn.com/aweme/720x720/tiktok-obj/1667290336699393.jpeg?x-expires=1658192400&x-signature=EQ7hnQPYs40m7NUX7b%2BY11KfFgA%3D"
+                            />
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisV} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>
