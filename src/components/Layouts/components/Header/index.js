@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlus,
@@ -11,17 +11,23 @@ import {
     faGear,
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
+
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 
+//Components
 import images from '@/assets/images';
 import Button from '@/components/Button';
 import { Menu } from '@/components/Popper/index';
 import { InboxIcon, MessageIcon } from '@/components/Icons';
 import Image from '@/components/Image';
 import Search from '../Search';
+
+//Route config
+import routeConfig from '@/config/routes';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -94,9 +100,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <a href="/" className={cx('logo')}>
+                <Link to={routeConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt="Logo tiktok" />
-                </a>
+                </Link>
 
                 <Search />
 
@@ -118,9 +124,7 @@ function Header() {
                             </Tippy>
                         </>
                     ) : (
-                        <Button primary to="/login">
-                            Login
-                        </Button>
+                        <Button primary>Login</Button>
                     )}
                     <Menu
                         items={currentUser ? currentUserMenu : MENU_ITEMS}
