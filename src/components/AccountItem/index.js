@@ -3,24 +3,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './AccountItem.module.scss';
+import Image from '@/components/Image';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
-function AccountItem() {
+function AccountItem({ data, onClick }) {
     return (
-        <div className={cx('wrapper')}>
-            <img
-                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f485490f970a0c1ccbf158b9e468450b~c5_300x300.webp?x-expires=1658106000&x-signature=p8n%2BZiY2Pq6sJ3PPgYaW%2FgYeXZA%3D"
-                className={cx('avatar')}
-                alt="Avatar"
-            />
+        <Link to={`/@${data.nickname}/profile`} className={cx('wrapper')}>
+            <Image src={data.avatar} className={cx('avatar')} alt={data.full_name} />
             <div className={cx('inner')}>
                 <h4 className={cx('title')}>
-                    vtv24news
-                    <FontAwesomeIcon className={cx('icon')} icon={faCheckCircle} />
+                    {data.full_name}
+                    {data.tick && <FontAwesomeIcon className={cx('icon')} icon={faCheckCircle} />}
                 </h4>
-                <p className={cx('description')}>VTV24</p>
+                <p className={cx('description')}>{data.nickname}</p>
             </div>
-        </div>
+        </Link>
     );
 }
 

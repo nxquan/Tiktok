@@ -1,0 +1,92 @@
+@import '/src/components/GlobalStyles/variable';
+.search,
+.search-result {
+    width: 361px;
+}
+.search-result {
+    max-height: 480px;
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(22, 24, 35, 0.2);
+    border-radius: 10px;
+}
+.search {
+    height: 46px;
+    background-color: #f1f1f2;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 92px;
+    border: 1.5px solid transparent;
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+.search-input {
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 16px 14px;
+    color: $text-color;
+    caret-color: $primary-color;
+
+    height: 100%;
+    flex: 1;
+    background-color: transparent;
+
+    &:not(:placeholder-shown) ~ .search-btn svg {
+        fill: rgba(22, 24, 35, 0.75) !important;
+    }
+}
+.search-line {
+    display: block;
+    width: 1px;
+    height: 70%;
+    background: rgba(22, 24, 35, 0.2);
+}
+.search-title {
+    height: 30px;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+    user-select: none;
+}
+
+.search-btn {
+    padding: 9px 16px 9px 12px;
+    &:hover {
+        cursor: pointer;
+        background: rgba(22, 24, 35, 0.03);
+    }
+    &:active {
+        background: rgba(22, 24, 35, 0.06);
+    }
+    svg {
+        fill: rgba(22, 24, 35, 0.34);
+    }
+}
+.clear,
+.loading {
+    font-size: 14px;
+    color: rgba(22, 24, 35, 0.34);
+    margin-right: 12px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.loading {
+    animation: spinnerLoading 1.5s ease infinite;
+}
+@keyframes spinnerLoading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

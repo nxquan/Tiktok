@@ -10,7 +10,7 @@ import Feedback from '@/pages/Feedback';
 const publicRoutes = [
     { path: '/', component: HomePage },
     { path: '/following', component: FollowingPage },
-    { path: '/profile', component: ProfilePage, layout: null },
+    { path: '/@:nickname', component: ProfilePage },
     { path: '/upload', component: UploadPage, layout: HeaderOnly },
     { path: '/feedback', component: Feedback },
 ];
