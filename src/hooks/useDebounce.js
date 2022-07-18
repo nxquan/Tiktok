@@ -7,7 +7,7 @@ function useDebounce(value, delay) {
         const id = setTimeout(() => setDebouncedValue(value), delay);
 
         return () => clearTimeout(id);
-    }, [value]);
+    }, [value, delay]);
 
     return debouncedValue;
 }
