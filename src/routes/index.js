@@ -1,5 +1,5 @@
-import routeConfig from '@/config/routes';
-import HeaderOnly from '@/components/Layouts/HeaderOnly';
+import config from '@/config';
+import HeaderOnly from '@/layouts/HeaderOnly';
 
 import Home from '@/pages/Home';
 import Following from '@/pages/Following';
@@ -9,11 +9,11 @@ import Feedback from '@/pages/Feedback';
 
 //Publi route for users who don't login
 const publicRoutes = [
-    { path: routeConfig.home, component: Home },
-    { path: routeConfig.following, component: Following },
-    { path: routeConfig.profile, component: Profile },
-    { path: routeConfig.upload, component: Upload, layout: HeaderOnly },
-    { path: routeConfig.feedback, component: Feedback },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.following, component: Following },
+    { path: config.routes.profile, component: Profile },
+    { path: config.routes.upload, component: Upload, layout: HeaderOnly },
+    { path: config.routes.feedback, component: Feedback },
 ];
 
 //Publi route for users who do login

@@ -5,7 +5,7 @@ import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 
 //Axios
-import * as searchService from '@/apiServices/searchService';
+import * as searchService from '@/services/searchService';
 
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
@@ -19,6 +19,7 @@ const cx = classNames.bind(styles);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
+    // eslint-disable-next-line
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
     const inputRef = useRef();
