@@ -7,13 +7,7 @@
     max-height: 480px;
     overflow-y: scroll;
 }
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-thumb {
-    background: rgba(22, 24, 35, 0.2);
-    border-radius: 10px;
-}
+
 .search {
     height: 46px;
     background-color: #f1f1f2;

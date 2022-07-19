@@ -4,8 +4,9 @@
 .content {
     width: 224px;
     .popper-menu {
-        max-height: fit-content;
         padding: 8px 0;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -14,6 +15,7 @@
     height: 50px;
     position: relative;
     margin-top: -8px;
+    flex-shrink: 0;
     & ~ .menu-list .menu-item {
         padding-left: 24px;
     }
@@ -34,7 +36,7 @@
         flex: 1;
         text-align: center;
         font-size: 1.6rem;
-        font-weight: 500;
+        font-weight: 600;
         color: $text-color;
         position: absolute;
         left: 50%;
@@ -45,6 +47,7 @@
 
 //Menu item
 .menu-list {
+    overflow-y: auto;
     .menu-item {
         height: 42px;
         margin-left: 0px;

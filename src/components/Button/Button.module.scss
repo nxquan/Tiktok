@@ -33,14 +33,14 @@
 
 //button types
 .none {
-    background-color: #fff;
+    background-color: $white-color;
     color: #000;
     border: none;
 }
 .round {
     border-radius: 999px;
     border-color: rgba(22, 24, 35, 0.2);
-    background-color: #fff;
+    background-color: $white-color;
     box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
     border-width: 1px solid rgba(22, 24, 35, 0.12);
 
@@ -51,7 +51,7 @@
 }
 .text {
     outline: none;
-    background-color: #fff;
+    background-color: $white-color;
     border: 1px solid rgba(22, 24, 35, 0.12);
     font-weight: 600;
     &:hover {
@@ -59,7 +59,7 @@
     }
 }
 .primary {
-    color: #fff !important;
+    color: $white-color !important;
     background-color: $primary-color;
     border-color: $primary-color;
     &:hover {
@@ -69,7 +69,7 @@
 .outline {
     color: $primary-color !important;
     border: 1px solid currentColor;
-    background-color: #fff;
+    background-color: $white-color;
     &:hover {
         border-color: currentColor;
         background-color: rgba(254, 44, 85, 0.06);
