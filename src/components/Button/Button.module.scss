@@ -58,8 +58,8 @@
         background-color: rgba(22, 24, 35, 0.03);
     }
 }
-.primary {
-    color: $white-color !important;
+.wrapper.primary {
+    color: $white-color;
     background-color: $primary-color;
     border-color: $primary-color;
     &:hover {

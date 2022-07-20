@@ -23,13 +23,13 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
     const inputRef = useRef();
-    let debounce = useDebounce(searchValue, 800);
+    let debouncedValue = useDebounce(searchValue, 800);
 
     useEffect(() => {
-        if (debounce.trim().length !== 0) {
+        if (debouncedValue.trim().length !== 0) {
             const fetchApi = async () => {
                 setLoading(true);
-                const result = await searchService.search(debounce);
+                const result = await searchService.search(debouncedValue);
                 setSearchResult(result);
                 setLoading(false);
             };
@@ -37,7 +37,7 @@ function Search() {
         } else {
             setSearchResult([]);
         }
-    }, [debounce]);
+    }, [debouncedValue]);
 
     const handleChangeSearchValue = (e) => {
         const searchValue = e.target.value;
@@ -62,6 +62,7 @@ function Search() {
                         </PopWrapper>
                     </div>
                 )}
+                onClickOutside={() => setShowResult(false)}
             >
                 <div className={cx('search')}>
                     <input
@@ -70,6 +71,7 @@ function Search() {
                         className={cx('search-input')}
                         value={searchValue}
                         onChange={handleChangeSearchValue}
+                        onFocus={() => setShowResult(true)}
                         ref={inputRef}
                     />
                     {!!searchValue && !loading && (
@@ -77,6 +79,7 @@ function Search() {
                             className={cx('clear')}
                             onClick={(e) => {
                                 setSearchValue('');
+                                setShowResult(false);
                                 inputRef.current.focus();
                             }}
                         >

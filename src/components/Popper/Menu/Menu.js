@@ -32,6 +32,22 @@ function Menu({ items, children, hideOnClickProp = false, onChange = defaultFn }
             );
         });
     };
+    const handleBackToPreviousMenu = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+    const renderCurrentMenu = (attrs) => (
+        <div className={cx('content')} tabIndex="-1" {...attrs}>
+            <PopWrapper className={cx('popper-menu')}>
+                {history.length > 1 && (
+                    <Header title={currentHistory.title} onBack={handleBackToPreviousMenu} />
+                )}
+                <div className={cx('menu-list')}>{renderItem()}</div>
+            </PopWrapper>
+        </div>
+    );
+    const handleBackToMainMenu = () => {
+        setHistory((prev) => prev.slice(0, 1));
+    };
 
     return (
         <Tippy
@@ -40,22 +56,8 @@ function Menu({ items, children, hideOnClickProp = false, onChange = defaultFn }
             placement="bottom-end"
             delay={[0, 700]}
             hideOnClick={hideOnClickProp}
-            render={(attrs) => (
-                <div className={cx('content')} tabIndex="-1" {...attrs}>
-                    <PopWrapper className={cx('popper-menu')}>
-                        {history.length > 1 && (
-                            <Header
-                                title={currentHistory.title}
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
-                            />
-                        )}
-                        <div className={cx('menu-list')}>{renderItem()}</div>
-                    </PopWrapper>
-                </div>
-            )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            render={renderCurrentMenu}
+            onHide={handleBackToMainMenu}
         >
             {children}
         </Tippy>
@@ -66,4 +68,5 @@ Menu.propTypes = {
     items: PropTypes.array.isRequired,
     children: PropTypes.node.isRequired,
 };
+
 export default Menu;
