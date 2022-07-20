@@ -7,7 +7,7 @@ import Profile from '@/pages/Profile';
 import Upload from '@/pages/Upload';
 import Feedback from '@/pages/Feedback';
 
-//Publi route for users who don't login
+//Public route for users who don't login
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.following, component: Following },
@@ -16,7 +16,7 @@ const publicRoutes = [
     { path: config.routes.feedback, component: Feedback },
 ];
 
-//Publi route for users who do login
+//Public route for users who do login
 const privateRoutes = [];
 
 export { publicRoutes, privateRoutes };
