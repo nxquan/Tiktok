@@ -1,1 +1,1 @@
-import {default} from './Upload'
+export { default } from './Upload';
