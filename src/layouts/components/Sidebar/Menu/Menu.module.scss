@@ -1,0 +1,41 @@
+@import '/src/components/GlobalStyles/variable';
+
+.menu-item {
+    display: flex;
+    align-items: center;
+
+    height: 48px;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.5s ease;
+
+    &:hover {
+        background-color: $hover-color;
+    }
+
+    &.active {
+        color: #fe2c55;
+        .active-icon {
+            display: inline-block;
+        }
+        .icon {
+            display: none;
+        }
+    }
+    .icon,
+    .active-icon {
+        height: 32px;
+    }
+
+    .active-icon {
+        display: none;
+    }
+
+    & .title {
+        display: inline-block;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 25px;
+        margin-left: 8px;
+    }
+}
