@@ -1,0 +1,87 @@
+@import '/src/components/GlobalStyles/variable';
+
+.wrapper {
+    padding: 16px 0;
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+
+        height: 1px;
+
+        background-color: #1618231f;
+
+        position: absolute;
+        top: 0;
+        left: 8px;
+        right: 12px;
+    }
+}
+.label {
+    padding: 0 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #161823bf;
+}
+
+.more-action {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0 8px;
+    margin-top: 8px;
+    color: $primary-color;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.preview-wrapper {
+    padding: 20px;
+    width: 320px;
+}
+
+.account-item {
+    padding: 5.5px 8px;
+    cursor: pointer;
+    background: $white-color;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.title {
+    font-size: 1.6rem;
+    color: $text-color;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.description {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 1.2rem;
+    font-weight: 4000;
+    line-height: 15px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.icon {
+    width: 14px;
+    margin-left: 4px;
+    color: #20d5ec;
+}

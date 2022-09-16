@@ -1,0 +1,54 @@
+@import '/src/components/GlobalStyles/variable';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    .avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+    }
+    .following-btn {
+        height: 34px;
+    }
+}
+
+.body {
+    .username {
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 25px;
+        color: $text-color;
+    }
+    .bio {
+        font-size: 1.4rem;
+        line-height: 16px;
+        font-weight: 600;
+        display: block;
+    }
+    .icon {
+        margin-left: 4px;
+        color: #20d5ec;
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+}
+
+.statistics {
+    font-size: 1.7rem;
+    margin-top: 8px;
+    .quantity {
+        margin-right: 6px;
+    }
+    .label {
+        font-weight: 400;
+        margin-right: 12px;
+        color: $text-alpha-color;
+    }
+}
+
+a {
+    display: block;
+}

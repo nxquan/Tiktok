@@ -14,7 +14,7 @@
     }
 
     &.active {
-        color: #fe2c55;
+        color: $primary-color;
         .active-icon {
             display: inline-block;
         }

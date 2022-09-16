@@ -3,4 +3,10 @@
 .wrapper {
     width: $default-layout-sidebar-width;
     padding: 20px 0 20px 8px;
+    overflow-y: overlay;
+    height: 100vh;
+}
+
+.main-action {
+    margin-bottom: 8px;
 }
