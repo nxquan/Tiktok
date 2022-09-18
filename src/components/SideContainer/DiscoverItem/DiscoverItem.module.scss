@@ -1,0 +1,30 @@
+@import '/src/components/GlobalStyles/variable';
+
+.discover-item {
+    display: inline-flex;
+    align-items: center;
+
+    height: 24px;
+    max-width: calc(100% - 12px);
+    padding: 3px 10px;
+    border-radius: 9999px;
+    border: 1px solid rgba(22, 24, 35, 0.2);
+    margin-right: 8px;
+    margin-bottom: 12px;
+}
+
+.icon {
+    height: 16px;
+    flex-shrink: 0;
+}
+.title {
+    font-size: 1.4rem;
+    line-height: 14px;
+    font-weight: 400;
+    color: $text-alpha-color;
+    padding-left: 6px;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
