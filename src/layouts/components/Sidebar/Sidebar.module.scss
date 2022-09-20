@@ -5,8 +5,43 @@
     padding: 20px 0 20px 8px;
     overflow-y: overlay;
     height: 100vh;
+
+    mask-image: linear-gradient(to top, transparent, black),
+        linear-gradient(to left, transparent 8px, black 8px);
+    mask-size: 100% 20000px;
+    mask-position: left bottom;
+
+    -webkit-mask-image: linear-gradient(to top, transparent, black),
+        linear-gradient(to left, transparent 8px, black 8px);
+    -webkit-mask-size: 100% 20000px;
+    -webkit-mask-position: left bottom;
+    transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.06);
+    }
+    &:hover {
+        mask-position: left top;
+        -webkit-mask-position: left top;
+    }
 }
 
 .main-action {
     margin-bottom: 8px;
+}
+.hint-login {
+    padding-left: 8px;
+
+    .hint {
+        font-size: 1.6rem;
+        color: rgba(22, 24, 35, 0.5);
+        line-height: 22px;
+        margin-bottom: 20px;
+    }
+    .login-btn {
+        width: calc(100% - 8px);
+    }
 }

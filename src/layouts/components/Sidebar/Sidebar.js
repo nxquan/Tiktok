@@ -1,8 +1,4 @@
-import config from '@/config';
-
 import classNames from 'classnames/bind';
-import styles from './Sidebar.module.scss';
-
 import { Menu, MenuItem } from '@/layouts/components/Sidebar/Menu';
 import SideContainer from '@/components/SideContainer';
 import {
@@ -15,8 +11,13 @@ import {
     SharpIcon,
     NoteMusicIcon,
 } from '@/components/Icons';
+import { useState } from 'react';
+
+import config from '@/config';
 import DiscoverItem from '@/components/SideContainer/DiscoverItem';
 import Information from '@/components/SideContainer/Information';
+import styles from './Sidebar.module.scss';
+import Button from '@/components/Button';
 
 const cx = classNames.bind(styles);
 const infoTiktok = [
@@ -119,6 +120,8 @@ const infoCopyright = [
     },
 ];
 function Sidebar() {
+    const [isLogin, setIsLogin] = useState(false);
+
     return (
         <aside className={cx('wrapper')}>
             <Menu>
@@ -142,8 +145,20 @@ function Sidebar() {
                         solidIcon={<SolidLiveIcon />}
                     />
                 </div>
+                {!isLogin && (
+                    <SideContainer>
+                        <div className={cx('hint-login')}>
+                            <p className={cx('hint')}>
+                                Log in to follow creators, like videos, and view comments.
+                            </p>
+                            <Button large outline className={cx('login-btn')}>
+                                Log in
+                            </Button>
+                        </div>
+                    </SideContainer>
+                )}
                 <SideContainer label="Suggested accounts" />
-                <SideContainer label="Following accounts" />
+                {isLogin && <SideContainer label="Following accounts" />}
                 <SideContainer label="Discover">
                     <DiscoverItem icon={<SharpIcon />} title="suthatla" to="/discover/suthatla" />
                     <DiscoverItem icon={<SharpIcon />} title="suthatla" to="/discover/suthatla" />

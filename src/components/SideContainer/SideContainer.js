@@ -27,6 +27,7 @@ function SideContainer({ label, children }) {
 }
 
 SideContainer.propTypes = {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    children: PropTypes.node,
 };
 export default SideContainer;
