@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlus,
@@ -25,6 +26,8 @@ import { Menu } from '@/components/Popper/index';
 import { InboxIcon, MessageIcon } from '@/components/Icons';
 import Image from '@/components/Image';
 import Search from '../Search';
+import Modal from '@/components/Modal';
+import Authen from '@/components/Modal/Authen';
 
 //Route config
 import routeConfig from '@/config/routes';
@@ -60,9 +63,33 @@ const MENU_ITEMS = [
         title: 'Keyboard shortcuts',
     },
 ];
-
+const currentUserMenu = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'View profile',
+        to: '/profile',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Get coins',
+        to: '/coins',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Setting',
+        to: '/setting',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faSignOut} />,
+        title: 'Log out',
+        to: '/login',
+        separate: true,
+    },
+];
 function Header() {
     let currentUser = false;
+    const [isShowModal, setIsShowModal] = useState(false);
 
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
@@ -72,30 +99,9 @@ function Header() {
             default:
         }
     };
-    const currentUserMenu = [
-        {
-            icon: <FontAwesomeIcon icon={faUser} />,
-            title: 'View profile',
-            to: '/profile',
-        },
-        {
-            icon: <FontAwesomeIcon icon={faCoins} />,
-            title: 'Get coins',
-            to: '/coins',
-        },
-        {
-            icon: <FontAwesomeIcon icon={faGear} />,
-            title: 'Setting',
-            to: '/setting',
-        },
-        ...MENU_ITEMS,
-        {
-            icon: <FontAwesomeIcon icon={faSignOut} />,
-            title: 'Log out',
-            to: '/login',
-            separate: true,
-        },
-    ];
+    const handleCloseModal = () => {
+        setIsShowModal(false);
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -107,7 +113,12 @@ function Header() {
                 <Search />
 
                 <div className={cx('utility')}>
-                    <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />} to="/upload">
+                    <Button
+                        className={cx('upload-btn')}
+                        text
+                        leftIcon={<FontAwesomeIcon icon={faPlus} />}
+                        to="/upload"
+                    >
                         Upload
                     </Button>
                     {currentUser ? (
@@ -124,7 +135,9 @@ function Header() {
                             </Tippy>
                         </>
                     ) : (
-                        <Button primary>Login</Button>
+                        <Button primary onClick={() => setIsShowModal(true)}>
+                            Login
+                        </Button>
                     )}
                     <Menu
                         items={currentUser ? currentUserMenu : MENU_ITEMS}
@@ -144,6 +157,12 @@ function Header() {
                     </Menu>
                 </div>
             </div>
+
+            {isShowModal && (
+                <Modal isShowModal={isShowModal}>
+                    <Authen onCloseModal={handleCloseModal} />
+                </Modal>
+            )}
         </header>
     );
 }

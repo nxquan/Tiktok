@@ -27,6 +27,10 @@
 .utility {
     display: flex;
     align-items: center;
+
+    & .upload-btn {
+        padding: 5px 11px;
+    }
 }
 .more-btn {
     min-width: 20px !important;
